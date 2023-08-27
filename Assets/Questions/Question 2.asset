@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: "How many years after 'Star Wars: Episode VI \u2013 Return of the Jedi'
     is 'The Mandalorian' set?"
+  answer:
+  - 5
+  - 15
+  - 50
+  - 150
+  correctAnswer: 0

@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: How many years old is Baby Yoda said to be when we first meet him in
     'The Mandalorian'?
+  answer:
+  - 100
+  - 2
+  - 50
+  - 242
+  correctAnswer: 2

@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question
   m_EditorClassIdentifier: 
   question: Which actor plays the Mandalorian?
+  answer:
+  - Diego Luna
+  - Kieran Culkin
+  - Eugenio Derbez
+  - Pedro Pascal
+  correctAnswer: 3

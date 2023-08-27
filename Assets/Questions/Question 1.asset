@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Question 1
   m_EditorClassIdentifier: 
   question: What is the Mandalorian's real name?
+  answer:
+  - Fennec Shand
+  - Din Djarin
+  - Razor Crest
+  - Cara Dune
+  correctAnswer: 1
