@@ -13,7 +13,7 @@ public class Quiz : MonoBehaviour
     [Header("Answer UI")]
     [SerializeField] GameObject[] answerButtons;
     int correctAnswerIndex;
-    bool hasAnswered = false;
+    bool hasAnswered = true;
     [Header("Button Sprites")]
     [SerializeField] Sprite defaultButtonSprite;
     [SerializeField] Sprite correctButtonSprite;
@@ -25,17 +25,27 @@ public class Quiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     ScoreKeeper scoreKeeper;
 
+    [Header("Progress Bar")]
+    [SerializeField] Slider progressBar;
+    public bool isComplete = false;
 
-    void Start()
+
+    void Awake()
     {
         timer = FindObjectOfType<Timer>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        progressBar.maxValue = questions.Count;
+        progressBar.value = 0;
     }
 
     void Update()
     {
         timerImage.fillAmount = timer.fillFraction;
         if (timer.loadNextQuestion) {
+            if (progressBar.value == progressBar.maxValue) {
+                isComplete = true;
+                return;
+            }
             timer.loadNextQuestion = false;
             hasAnswered = false;
             GetNextQuestion();
@@ -56,6 +66,7 @@ public class Quiz : MonoBehaviour
         SetDefaultButtonSprites();
         DisplayQuestion();
         scoreKeeper.IncrementQuestionsSeen();
+        progressBar.value++;
     }
 
     void GetRandomQuestion() {
@@ -93,7 +104,7 @@ public class Quiz : MonoBehaviour
         DisplayAnswer(index);
         SetButtonState(false);
         timer.CancelTimer(); 
-        scoreText.text = "Score: " + scoreKeeper.CalculateScore() + "%";   
+        scoreText.text = "Score: " + scoreKeeper.CalculateScore() + "%";
     }
 
     void DisplayAnswer(int index) {
